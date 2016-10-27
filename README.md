@@ -58,7 +58,14 @@ The default scope is set to _user:details:self_, making this hash available in `
     email:       'johndoe@example.com',
     description: 'My channel.',
     image:       'https://uploads.beam.pro/avatar/12345678-1234.jpg',
-    urls:        { Beam: 'http://beam.pro/johndoe' }
+    social:      {
+      discord:  'johndoe#12345',
+      facebook: 'https://facebook.com/John.Doe'
+      player:   'https://player.me/johndoe',
+      twitter:  'https://twitter.com/johndoe',
+      youtube:  'https://youtube.com/user/johndoe'
+    },
+    urls:        { Beam: 'https://beam.pro/johndoe' }
   },
   credentials: {
     token:         'asdfghjklasdfghjklasdfghjkl',

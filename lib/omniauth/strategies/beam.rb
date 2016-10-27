@@ -31,12 +31,8 @@ module OmniAuth
           description: raw_info['bio'],
           image:       raw_info['avatarUrl'],
           social:      social_info,
-          urls:        { Beam: "http://beam.pro/#{raw_info['username']}" }
+          urls:        urls_info
         }
-      end
-
-      extra do
-        { raw_info: raw_info }
       end
 
       def access_token_options
@@ -76,6 +72,12 @@ module OmniAuth
           hsh[key.to_sym] = raw_social[key] if raw_social.key? key
           hsh
         end
+      end
+
+      def urls_info
+        {
+          Beam: "http://beam.pro/#{raw_info['channel']['token']}"
+        }
       end
     end # Beam
   end # Strategies
