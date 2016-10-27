@@ -34,7 +34,7 @@ module OmniAuth
       end
 
       def access_token_options
-        options.access_token_options.each_with_object({}) do |hsh, (key, val)|
+        options.access_token_options.each_with_object({}) do |(key, val), hsh|
           hsh[key.to_sym] = val
           hsh
         end
