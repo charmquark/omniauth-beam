@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/omniauth-beam.svg)](https://badge.fury.io/rb/omniauth-beam)
+
 # OmniAuth::Beam
 OmniAuth strategy for Beam.pro
 
