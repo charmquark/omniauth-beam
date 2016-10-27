@@ -7,6 +7,7 @@ module OmniAuth
       BLANK_PARAMS  = [nil, ''].freeze
       DEFAULT_SCOPE = 'user:details:self'.freeze
       RAW_INFO_URL  = '/api/v1/users/current'.freeze
+      SOCIAL_KEYS   = %w(facebook discord player twitter youtube).freeze
 
       option :name, 'beam'
 
@@ -29,8 +30,13 @@ module OmniAuth
           email:       raw_info['email'],
           description: raw_info['bio'],
           image:       raw_info['avatarUrl'],
+          social:      social_info,
           urls:        { Beam: "http://beam.pro/#{raw_info['username']}" }
         }
+      end
+
+      extra do
+        { raw_info: raw_info }
       end
 
       def access_token_options
@@ -62,6 +68,14 @@ module OmniAuth
 
       def raw_info
         @raw_info ||= access_token.get(RAW_INFO_URL).parsed
+      end
+
+      def social_info
+        raw_social = raw_info['social']
+        SOCIAL_KEYS.each_with_object({}) do |key, hsh|
+          hsh[key.to_sym] = raw_social[key] if raw_social.key? key
+          hsh
+        end
       end
     end # Beam
   end # Strategies
