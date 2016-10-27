@@ -29,7 +29,7 @@ module OmniAuth
           email:       raw_info['email'],
           description: raw_info['bio'],
           image:       raw_info['avatarUrl'],
-          urls:        { Beam: "http://beam.pro/#{raw_info['name']}" }
+          urls:        { Beam: "http://beam.pro/#{raw_info['username']}" }
         }
       end
 
